@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <title>Digital Pantry</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="title">
+      <h2>Morgan Family</h2>
+      <h1>Digital Pantry</h1>
+    </div>
+  </div>
+  <div id="app" class="content">
+    <div class="add">
+      <div class="form">
+        <input v-model="title" placeholder="Title">
+        <input v-model="barcode" placeholder="Barcode"></input>
+        <input v-model="amount" type="number" placeholder="Amount">
+        <button @click="addFood">Add</button>
+      </div>
+    </div>
+    <div v-for="food in foods">
+      <div class="food-container">
+        <div v-show="food != editFood">
+          <span>{{food.title}}</span>
+          <span>{{food.barcode}}</span>
+          <span>{{food.amount}}</span>
+          <button class="edit-button" @click="selectEditFood(food)">Edit</button>
+          <button class="edit-button" @click="deleteFood(food)">Delete</button>
+        </div>
+        <div class="form" v-show="food == editFood">
+          <input v-model="editFood.title" v-bind:placeholder="food.title">
+          <input v-model="editFood.barcode" v-bind:placeholder="food.barcode"></input>
+          <input v-model="editFood.amount" type="number" v-bind:placeholder="food.amount">
+          <button @click="cancelEdit()">Cancel</button>
+          <button @click="uploadEdit()">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <a href="https://github.com/BYU-CS-260-Winter-2019/lab-4-carterdmorgan">GitHub Repo</a>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
