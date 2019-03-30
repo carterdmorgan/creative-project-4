@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost:27017/pantry', {
 });
 
 
-app.listen(3000, () => console.log('Server listening on port 3000!'));
+app.listen(3030, () => console.log('Server listening on port 3030!'));
 
 
 // Create a scheme for items in the museum: a title and a path to an image.
